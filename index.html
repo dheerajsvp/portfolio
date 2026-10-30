@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dheeraj Subhash V.P | Software Developer</title>
+<meta name="description" content="Entry-level software developer with six months on a production React and TypeScript platform. Full-stack projects include a group expense splitter, an embeddable AI shopping assistant and a document Q&A app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F9F6EE;
+    --side: #F2ECDF;
+    --ink: #3A3023;
+    --muted: #5C584D;
+    --rule: #E3DAC7;
+    --link: #7A5A1C;
+    --brass: #A67C2E;
+    --focus: #7A5A1C;
+    --panel: #EFE8D7;
+    --card: #FFFDF9;
+    --card-ink: #3A3023;
+    --card-muted: #66625A;
+    --card-rule: #EDE6D8;
+    --soft: #F6F1E5;
+    --navy: #E9DEC4;
+    --navy-ink: #3A3023;
+    --hl: #F0D58E;
+    --btn-bg: #E9DEC4;
+    --btn-ink: #3A3023;
+    --btn-hover: #DFD0AE;
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1C1914;
+      --side: #17140F;
+      --ink: #EDE6D8;
+      --muted: #B1A998;
+      --rule: #38322A;
+      --link: #E0B65E;
+      --brass: #D2A94F;
+      --focus: #E0B65E;
+      --panel: #2A251D;
+      --card: #14110D;
+      --card-ink: #EDE6D8;
+      --card-muted: #A9A190;
+      --card-rule: #342E25;
+      --soft: #221E17;
+      --navy: #0F1A28;
+      --navy-ink: #EDE6D8;
+      --hl: #5F4A14;
+      --btn-bg: #D2A94F;
+      --btn-ink: #1B1710;
+      --btn-hover: #E0B65E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1C1914;
+    --side: #17140F;
+    --ink: #EDE6D8;
+    --muted: #B1A998;
+    --rule: #38322A;
+    --link: #E0B65E;
+    --brass: #D2A94F;
+    --focus: #E0B65E;
+    --panel: #2A251D;
+    --card: #14110D;
+    --card-ink: #EDE6D8;
+    --card-muted: #A9A190;
+    --card-rule: #342E25;
+    --soft: #221E17;
+    --navy: #0F1A28;
+    --navy-ink: #EDE6D8;
+    --hl: #5F4A14;
+    --btn-bg: #D2A94F;
+    --btn-ink: #1B1710;
+    --btn-hover: #E0B65E;
+  }
+
+  html { background: var(--bg); scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: inherit; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--text); font-size: 1.05rem; line-height: 1.65; -webkit-text-size-adjust: 100%; }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+
+  .skip { position: absolute; left: -999px; top: .5rem; background: var(--btn-bg); color: var(--btn-ink); font-weight: 600; padding: .5rem .9rem; z-index: 10; }
+  .skip:focus { left: 1rem; }
+
+  /* Page frame: fixed introduction on the left, work scrolls on the right */
+  .layout { max-width: 86rem; margin: 0 auto; display: grid; }
+  @media (min-width: 64rem) { .layout { grid-template-columns: 22rem minmax(0, 1fr); } }
+
+  .side { background: var(--side); padding: clamp(1.75rem, 5vw, 3rem) clamp(1.25rem, 5vw, 2.5rem); display: flex; flex-direction: column; gap: 2rem; }
+  @media (min-width: 64rem) {
+    .side { position: sticky; top: 0; height: 100vh; height: 100dvh; padding: 3rem 2.25rem 2.25rem; justify-content: space-between; overflow-y: auto; }
+  }
+  .monogram { width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--navy); color: var(--navy-ink); display: grid; place-items: center; font-family: var(--display); font-size: 1.5rem; line-height: 1; letter-spacing: .02em; margin-bottom: 1.75rem; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 9vw, 3.9rem); line-height: .98; letter-spacing: -.01em; margin: 0 0 1rem; }
+  h1 span { display: block; }
+  .role { font-weight: 600; font-size: 1.05rem; color: var(--link); margin: 0 0 1rem; }
+  .intro { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0; max-width: 30rem; }
+  .side-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; font-weight: 500; }
+  @media (min-width: 64rem) { .side-nav ul { flex-direction: column; gap: .5rem; font-size: 1.1rem; } }
+  .side-nav a { text-decoration: none; }
+  .side-nav a:hover { text-decoration: underline; text-decoration-color: var(--brass); text-decoration-thickness: 2px; text-underline-offset: .3em; }
+  .side-foot { display: grid; gap: .5rem; font-size: .95rem; }
+  .side-foot p { margin: 0; color: var(--muted); }
+  .side-foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; font-weight: 600; }
+  .side-foot a { color: var(--link); text-underline-offset: .25em; }
+
+  .btn { display: inline-block; font-family: var(--text); font-weight: 600; font-size: .98rem; line-height: 1.2; padding: .8rem 1.25rem; border-radius: .35rem; text-decoration: none; border: 1.5px solid transparent; transition: background-color .15s ease, border-color .15s ease; }
+  .btn-solid { background: var(--btn-bg); color: var(--btn-ink); border-color: color-mix(in srgb, var(--brass) 50%, transparent); }
+  .btn-solid:hover { background: var(--btn-hover); }
+  .btn-line { border-color: color-mix(in srgb, var(--ink) 40%, transparent); }
+  .btn-line:hover { border-color: var(--ink); }
+  .side .btn { justify-self: start; margin-bottom: .75rem; }
+  .side-foot a.btn { color: var(--btn-ink); text-decoration: none; }
+
+  /* Main column */
+  main { padding-inline: clamp(1.25rem, 5vw, 4rem); }
+  main section { padding-block: clamp(3rem, 6vw, 5rem); }
+  main section + section { border-top: 1px solid var(--rule); }
+  main section:first-child { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
+  h2 { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1.05; letter-spacing: -.01em; margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem); }
+  .sec-intro { max-width: 34rem; margin: calc(-1 * clamp(.75rem, 2vw, 1.25rem)) 0 clamp(1.75rem, 4vw, 2.5rem); color: var(--muted); }
+
+  /* Projects */
+  .projects { display: grid; gap: clamp(3.5rem, 7vw, 5.5rem); }
+  .copy { max-width: 42rem; padding-top: 1.75rem; }
+  .copy h3 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 4vw, 2.5rem); line-height: 1.05; margin: 0 0 .6rem; }
+  .what { font-size: 1.15rem; font-weight: 500; line-height: 1.5; margin: 0 0 1rem; }
+  .points { margin: 0; padding-left: 1.1rem; }
+  .points li { margin: .55rem 0; padding-left: .2rem; }
+  .points li::marker { color: var(--brass); }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem .5rem; list-style: none; margin: 1.25rem 0 0; padding: 0; font-weight: 500; font-size: .85rem; line-height: 1.2; }
+  .chips li { border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent); border-radius: 99px; padding: .3rem .75rem; }
+  .proj-links { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0 0; }
+
+  /* Illustrated previews */
+  .panel { position: relative; overflow: hidden; isolation: isolate; display: grid; place-items: center; min-height: 23rem; padding: clamp(1.25rem, 4vw, 2.5rem); background: var(--panel); border-radius: .6rem; font-family: var(--text); color: var(--card-ink); }
+  .panel::before { content: ""; position: absolute; z-index: -1; width: 24rem; height: 24rem; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--brass) 55%, transparent); right: -9rem; bottom: -11rem; box-shadow: 0 0 0 2.5rem color-mix(in srgb, var(--brass) 0%, transparent), inset 0 0 0 2.5rem color-mix(in srgb, var(--brass) 8%, transparent); }
+  .panel::after { content: ""; position: absolute; z-index: -1; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--brass); left: 1.5rem; top: 1.5rem; }
+  .m-card, .m-widget, .m-docs { width: 100%; background: var(--card); border-radius: .75rem; box-shadow: 0 1px 0 var(--card-rule), 0 20px 36px -24px rgba(40, 30, 10, .5); }
+  .m-card { max-width: 21rem; padding: 1.1rem 1.15rem 1.2rem; }
+  .m-card b, .m-widget b, .m-docs b { font-weight: 600; }
+  .m-head { display: grid; gap: .1rem; padding-bottom: .85rem; border-bottom: 1px solid var(--card-rule); }
+  .m-head strong { font-family: var(--display); font-weight: 400; font-size: 1.45rem; line-height: 1.1; }
+  .m-head span { font-size: .88rem; color: var(--card-muted); }
+  .m-list { list-style: none; margin: 0; padding: 0; }
+  .m-list li { display: flex; justify-content: space-between; gap: 1rem; padding: .65rem 0; border-bottom: 1px solid var(--card-rule); font-size: .95rem; }
+  .m-list b { font-variant-numeric: tabular-nums; }
+  .m-qr { display: flex; align-items: center; gap: .9rem; padding-top: 1rem; }
+  .m-qr svg { flex: none; width: 5.25rem; height: 5.25rem; padding: .35rem; background: #fff; border: 1px solid var(--card-rule); border-radius: .4rem; fill: #1B2430; }
+  .m-qr div { display: grid; gap: .1rem; font-size: .95rem; }
+  .m-qr span { font-size: .85rem; color: var(--card-muted); }
+
+  .m-site { position: absolute; z-index: -1; left: 1.25rem; right: 40%; top: 5rem; display: grid; gap: .7rem; }
+  .m-site i { display: block; height: .7rem; border-radius: .4rem; background: color-mix(in srgb, var(--card-ink) 13%, transparent); }
+  .m-site i:nth-child(1) { width: 70%; height: 1.1rem; }
+  .m-site i:nth-child(3) { width: 85%; }
+  .m-site i:nth-child(4) { width: 55%; }
+  .m-widget { max-width: 20rem; justify-self: end; align-self: end; padding: 0 0 1rem; overflow: hidden; }
+  .w-head { display: flex; align-items: center; gap: .55rem; padding: .75rem 1rem; background: var(--navy); color: var(--navy-ink); font-size: 1rem; }
+  .w-dot { width: .6rem; height: .6rem; border-radius: 50%; background: var(--brass); }
+  .w-head svg { margin-left: auto; width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .bub { margin: .8rem 1rem 0; padding: .55rem .8rem; border-radius: .8rem; font-size: .92rem; line-height: 1.4; width: fit-content; max-width: 85%; }
+  .bub.me { margin-left: auto; background: var(--navy); color: var(--navy-ink); border-bottom-right-radius: .2rem; }
+  .bub.ai { background: var(--soft); border-bottom-left-radius: .2rem; }
+  .w-prods { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: .8rem 1rem 0; }
+  .w-prods div { display: grid; gap: .1rem; padding: .55rem; border: 1px solid var(--card-rule); border-radius: .5rem; font-size: .85rem; }
+  .w-prods span { color: var(--card-muted); }
+  .w-prods i { display: block; height: 3rem; border-radius: .35rem; margin-bottom: .35rem; background: var(--brass); }
+  .w-prods div:nth-child(2) i { background: #8C9AAE; }
+  .w-cart { display: flex; justify-content: space-between; gap: .75rem; margin: .9rem 1rem 0; padding-top: .8rem; border-top: 1px solid var(--card-rule); font-size: .88rem; color: var(--card-muted); }
+  .w-cart b { color: var(--card-ink); }
+
+  .m-docs { max-width: 26rem; display: flex; flex-wrap: wrap; gap: 1rem; padding: 1.1rem; align-items: flex-start; }
+  .m-paper { flex: none; width: 7.5rem; padding: .7rem .6rem .5rem; background: #fff; border: 1px solid var(--card-rule); border-radius: .25rem; display: grid; gap: .32rem; }
+  .m-paper i { display: block; height: .32rem; border-radius: .2rem; background: #D8D2C4; }
+  .m-paper i.s { width: 70%; }
+  .m-paper i.hl { background: var(--brass); }
+  .m-paper small { margin-top: .3rem; font-size: .7rem; color: #66625A; text-align: center; }
+  .m-qa { flex: 1 1 11rem; min-width: 0; display: grid; gap: .55rem; }
+  .m-qa .bub { margin: 0; max-width: 100%; }
+  .m-ans { padding: .6rem .75rem; border-radius: .7rem; background: var(--soft); font-size: .92rem; line-height: 1.4; border-bottom-left-radius: .2rem; }
+  .m-ans.none { background: transparent; border: 1px dashed color-mix(in srgb, var(--card-ink) 35%, transparent); color: var(--card-muted); }
+  .cite { display: inline-block; margin-left: .25rem; padding: .05rem .5rem; border-radius: 99px; background: var(--hl); color: #1B2430; font-size: .78rem; font-weight: 600; }
+
+  /* Experience, skills, education */
+  .rows > .row { display: grid; gap: .6rem 2rem; padding-block: 1.6rem; }
+  .rows > .row:first-child { padding-top: 0; }
+  .rows > .row:last-child { padding-bottom: 0; }
+  .rows > .row + .row { border-top: 1px solid var(--rule); }
+  @media (min-width: 48rem) { .rows > .row { grid-template-columns: 11.5rem minmax(0, 1fr); } }
+  .row h3 { font-weight: 600; font-size: 1.1rem; line-height: 1.3; margin: 0 0 .35rem; }
+  .meta { font-size: .95rem; line-height: 1.5; color: var(--muted); margin: 0; }
+  .detail { max-width: 40rem; }
+  .lede { font-weight: 500; margin: 0 0 .75rem; }
+  .detail > p:last-child { margin-bottom: 0; }
+  .rows .chips { margin: 0; }
+
+  footer { padding: 2rem clamp(1.25rem, 5vw, 4rem) 2.5rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+  footer p { margin: 0; }
+
+  /* One page-load moment: the monogram settles in */
+  @keyframes settle { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+  .monogram { animation: settle .8s cubic-bezier(.2, .7, .2, 1) both; }
+  @media (prefers-reduced-motion: reduce) { .monogram { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="layout">
+  <header class="side">
+    <div>
+      <div class="monogram" aria-hidden="true">DS</div>
+      <h1><span>Dheeraj</span><span>Subhash V.P</span></h1>
+      <p class="role">Entry-level software developer</p>
+      <p class="intro">Six months shipping features on a production React and TypeScript platform, plus full-stack projects built with Django and retrieval-augmented generation.</p>
+    </div>
+
+    <nav class="side-nav" aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-foot">
+      <a class="btn btn-solid" href="mailto:dheerajsubhashvp@gmail.com">Email me</a>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/dheeraj-subhash-v-p-38790a250" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/dheerajsvp" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+      <p>Kerala, India. Open to entry-level software developer roles.</p>
+    </div>
+  </header>
+
+  <div>
+    <main id="main">
+      <section id="work" aria-labelledby="h-work">
+        <h2 id="h-work">Selected work</h2>
+        <p class="sec-intro">Three projects I built end to end. Each one links to its code.</p>
+
+        <div class="projects">
+          <article class="project">
+            <div class="panel" aria-hidden="true">
+              <div class="m-card">
+                <div class="m-head"><strong>Goa weekend</strong><span>4 people, ₹18,400 spent. Ravi is owed ₹2,510.</span></div>
+                <ul class="m-list">
+                  <li><span>Asha pays Ravi</span><b>₹1,240</b></li>
+                  <li><span>Kiran pays Ravi</span><b>₹860</b></li>
+                  <li><span>Meera pays Ravi</span><b>₹410</b></li>
+                </ul>
+                <div class="m-qr">
+                  <svg viewBox="-1 -1 23 23" focusable="false"><path d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h1v1h-1zM14 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h2v1h-2zM11 1h2v1h-2zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h3v1h-3zM12 2h1v1h-1zM14 2h1v1h-1zM16 2h3v1h-3zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h3v1h-3zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM16 4h3v1h-3zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h7v1h-7zM9 6h1v1h-1zM11 6h2v1h-2zM14 6h7v1h-7zM8 7h1v1h-1zM10 7h2v1h-2zM0 8h2v1h-2zM4 8h1v1h-1zM9 8h1v1h-1zM11 8h2v1h-2zM14 8h1v1h-1zM16 8h1v1h-1zM0 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM14 9h2v1h-2zM17 9h4v1h-4zM0 10h1v1h-1zM2 10h3v1h-3zM6 10h2v1h-2zM12 10h3v1h-3zM17 10h4v1h-4zM2 11h4v1h-4zM12 11h1v1h-1zM17 11h3v1h-3zM0 12h11v1h-11zM13 12h5v1h-5zM20 12h1v1h-1zM9 13h4v1h-4zM14 13h2v1h-2zM18 13h1v1h-1zM20 13h1v1h-1zM0 14h7v1h-7zM12 14h3v1h-3zM18 14h2v1h-2zM0 15h1v1h-1zM6 15h1v1h-1zM13 15h1v1h-1zM15 15h5v1h-5zM0 16h1v1h-1zM2 16h3v1h-3zM6 16h1v1h-1zM9 16h1v1h-1zM13 16h5v1h-5zM0 17h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM16 17h2v1h-2zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h3v1h-3zM6 18h1v1h-1zM9 18h2v1h-2zM13 18h3v1h-3zM18 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM17 19h1v1h-1zM20 19h1v1h-1zM0 20h7v1h-7zM8 20h3v1h-3zM12 20h3v1h-3zM16 20h2v1h-2zM20 20h1v1h-1z"/></svg>
+                  <div><b>Pay Ravi ₹1,240</b><span>Scan with any UPI app</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="copy">
+              <h3>TripSplit</h3>
+              <p class="what">Splits group trip expenses, then works out the fewest payments needed to settle up.</p>
+              <ul class="points">
+                <li>A greedy two-heap algorithm cuts a group’s debts to at most n−1 payments. Money is stored as integer paise, so rounding never drifts.</li>
+                <li>UPI deep links and generated QR codes make settling a one-tap job. I tested them with real transactions across several UPI apps.</li>
+                <li>75 automated tests (Django and Vitest) run in GitHub Actions CI. The API runs on Render and the front end on Vercel, connected over CORS.</li>
+              </ul>
+              <ul class="chips" aria-label="Built with"><li>React</li><li>TypeScript</li><li>Django REST</li><li>PostgreSQL</li></ul>
+              <p class="proj-links">
+                <a class="btn btn-solid" href="https://tripsplit-nine-topaz.vercel.app/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn btn-line" href="https://github.com/dheerajsvp/tripsplit" target="_blank" rel="noopener">GitHub</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="panel" aria-hidden="true">
+              <div class="m-site"><i></i><i></i><i></i><i></i></div>
+              <div class="m-widget">
+                <div class="w-head"><span class="w-dot"></span><b>Sage</b>
+                  <svg viewBox="0 0 24 24" focusable="false"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+                </div>
+                <p class="bub me">Running shoes under ₹3,000</p>
+                <p class="bub ai">Here are two that fit your budget.</p>
+                <div class="w-prods">
+                  <div><i></i><b>Road runner</b><span>₹1,999</span></div>
+                  <div><i></i><b>Trail runner</b><span>₹2,499</span></div>
+                </div>
+                <div class="w-cart"><span>Cart, 1 item</span><b>₹1,999 incl. GST</b></div>
+              </div>
+            </div>
+            <div class="copy">
+              <h3>Sage</h3>
+              <p class="what">An AI shopping assistant that any website can embed with a single script tag.</p>
+              <ul class="points">
+                <li>The floating widget is isolated with Shadow DOM. It takes voice input, speaks its replies, and includes a product catalogue, a cart and a mock UPI and card checkout in ₹ with GST-inclusive pricing.</li>
+                <li>Gemini runs behind a serverless function and uses tool calling for product search and cart actions. The API key stays on the server, card and UPI details are redacted before any model call, and a built-in assistant takes over if the model fails.</li>
+                <li>89 Vitest tests, with continuous deployment from GitHub to Netlify.</li>
+              </ul>
+              <ul class="chips" aria-label="Built with"><li>React</li><li>TypeScript</li><li>Gemini API</li><li>Netlify Functions</li></ul>
+              <p class="proj-links">
+                <a class="btn btn-solid" href="https://dheeraj-shop-assistant.netlify.app" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn btn-line" href="https://github.com/dheerajsvp/shop-assistant-widget" target="_blank" rel="noopener">GitHub</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="panel" aria-hidden="true">
+              <div class="m-docs">
+                <div class="m-paper"><i></i><i class="s"></i><i></i><i class="hl"></i><i class="hl s"></i><i></i><i class="s"></i><small>Page 14</small></div>
+                <div class="m-qa">
+                  <p class="bub me">What is the notice period?</p>
+                  <div class="m-ans">Either party must give 30 days’ written notice.<span class="cite">p. 14</span></div>
+                  <p class="bub me">Who is the CEO?</p>
+                  <div class="m-ans none">Not found in this document.</div>
+                </div>
+              </div>
+            </div>
+            <div class="copy">
+              <h3>Ask Your Documents</h3>
+              <p class="what">Answers questions from uploaded PDFs and cites the page each answer came from.</p>
+              <ul class="points">
+                <li>Retrieval-augmented generation over document chunks stored in PostgreSQL with pgvector. When the answer isn’t in the document, it says “not found” instead of guessing.</li>
+                <li>PDF parsing and embedding run as Celery and Redis background jobs, so uploads return in about 0.3 s. Jobs are safe to run twice, retries are race-safe, and a Redis outage shows as a failed status with a retry button.</li>
+                <li>Model citations are verified in code, and the pipeline is hardened against prompt injection from document text.</li>
+                <li>An evaluation script measures retrieval quality. Shipped with 133 backend and 98 frontend tests, a Docker Compose stack and an axe-core accessibility audit with 0 violations.</li>
+              </ul>
+              <ul class="chips" aria-label="Built with"><li>React</li><li>TypeScript</li><li>Django REST</li><li>pgvector</li><li>Celery</li><li>Redis</li><li>Gemini API</li></ul>
+              <p class="proj-links">
+                <a class="btn btn-solid" href="https://github.com/dheerajsvp/rag-document-qa" target="_blank" rel="noopener">GitHub</a>
+              </p>
+              
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="h-exp">
+        <h2 id="h-exp">Experience</h2>
+        <div class="rows">
+          <article class="row">
+            <div>
+              <h3>Azentra</h3>
+              <p class="meta">Software Developer Intern<br>March 2026 – August 2026<br>Sydney, Australia (remote)</p>
+            </div>
+            <div class="detail">
+              <p class="lede">Worked across the front end and back end of an AI governance platform used in production.</p>
+              <ul class="points">
+                <li>Built and styled reusable UI components in React and TypeScript, giving the platform a consistent, responsive interface that is easy to navigate.</li>
+                <li>Tested application flows and user scenarios through systematic bug fixing, resolving UI and operational bugs so data renders accurately on screen.</li>
+                <li>Refactored backend endpoints and removed database inconsistencies, so the front end gets clean data in real time.</li>
+                <li>Delivered every planned feature on time each sprint, using clean code practices and peer code reviews.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="h-skills">
+        <h2 id="h-skills">Skills</h2>
+        <div class="rows">
+          <div class="row"><h3>Languages</h3><ul class="chips"><li>Python</li><li>SQL</li><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>HTML</li><li>CSS</li></ul></div>
+          <div class="row"><h3>Frameworks and libraries</h3><ul class="chips"><li>React.js</li><li>Django</li><li>Django REST Framework</li><li>Celery</li><li>Scikit-learn</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li><li>Joblib</li></ul></div>
+          <div class="row"><h3>Databases</h3><ul class="chips"><li>PostgreSQL</li><li>pgvector</li><li>Redis</li></ul></div>
+          <div class="row"><h3>Testing and DevOps</h3><ul class="chips"><li>Vitest</li><li>Django Test Framework</li><li>Docker</li><li>GitHub Actions (CI)</li><li>Render</li><li>Vercel</li><li>Netlify</li></ul></div>
+          <div class="row"><h3>Tools and platforms</h3><ul class="chips"><li>Git and GitHub</li><li>VS Code</li><li>Azure</li><li>Power BI</li><li>Streamlit</li><li>Google Colab</li><li>Gemini API</li><li>Netlify Functions</li></ul></div>
+        </div>
+      </section>
+
+      <section id="education" aria-labelledby="h-edu">
+        <h2 id="h-edu">Education</h2>
+        <div class="rows">
+          <article class="row">
+            <div>
+              <h3>SRM Institute of Science and Technology</h3>
+              <p class="meta">September 2021 – June 2025<br>Chennai, India</p>
+            </div>
+            <div class="detail">
+              <p class="lede">Bachelor of Technology in Computer Science</p>
+              <p>CGPA 7.63</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Dheeraj Subhash V.P</p>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
