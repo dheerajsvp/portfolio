@@ -32,55 +32,10 @@
     --btn-hover: #DFD0AE;
     --display: "Instrument Serif", Georgia, "Times New Roman", serif;
     --text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #1C1914;
-      --side: #17140F;
-      --ink: #EDE6D8;
-      --muted: #B1A998;
-      --rule: #38322A;
-      --link: #E0B65E;
-      --brass: #D2A94F;
-      --focus: #E0B65E;
-      --panel: #2A251D;
-      --card: #14110D;
-      --card-ink: #EDE6D8;
-      --card-muted: #A9A190;
-      --card-rule: #342E25;
-      --soft: #221E17;
-      --navy: #0F1A28;
-      --navy-ink: #EDE6D8;
-      --hl: #5F4A14;
-      --btn-bg: #D2A94F;
-      --btn-ink: #1B1710;
-      --btn-hover: #E0B65E;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #1C1914;
-    --side: #17140F;
-    --ink: #EDE6D8;
-    --muted: #B1A998;
-    --rule: #38322A;
-    --link: #E0B65E;
-    --brass: #D2A94F;
-    --focus: #E0B65E;
-    --panel: #2A251D;
-    --card: #14110D;
-    --card-ink: #EDE6D8;
-    --card-muted: #A9A190;
-    --card-rule: #342E25;
-    --soft: #221E17;
-    --navy: #0F1A28;
-    --navy-ink: #EDE6D8;
-    --hl: #5F4A14;
-    --btn-bg: #D2A94F;
-    --btn-ink: #1B1710;
-    --btn-hover: #E0B65E;
   }
 
   html { background: var(--bg); scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
@@ -93,8 +48,8 @@
   .skip:focus { left: 1rem; }
 
   /* Page frame: fixed introduction on the left, work scrolls on the right */
-  .layout { max-width: 86rem; margin: 0 auto; display: grid; }
-  @media (min-width: 64rem) { .layout { grid-template-columns: 22rem minmax(0, 1fr); } }
+  .layout { display: grid; }
+  @media (min-width: 64rem) { .layout { grid-template-columns: clamp(22rem, 24vw, 28rem) minmax(0, 1fr); } }
 
   .side { background: var(--side); padding: clamp(1.75rem, 5vw, 3rem) clamp(1.25rem, 5vw, 2.5rem); display: flex; flex-direction: column; gap: 2rem; }
   @media (min-width: 64rem) {
@@ -123,7 +78,7 @@
   .side-foot a.btn { color: var(--btn-ink); text-decoration: none; }
 
   /* Main column */
-  main { padding-inline: clamp(1.25rem, 5vw, 4rem); }
+  main { max-width: 72rem; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
   main section { padding-block: clamp(3rem, 6vw, 5rem); }
   main section + section { border-top: 1px solid var(--rule); }
   main section:first-child { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
@@ -208,14 +163,44 @@
   footer { padding: 2rem clamp(1.25rem, 5vw, 4rem) 2.5rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
   footer p { margin: 0; }
 
-  /* One page-load moment: the monogram settles in */
+  /* Motion: quiet and purposeful, and switched off for visitors who prefer reduced motion */
   @keyframes settle { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
   .monogram { animation: settle .8s cubic-bezier(.2, .7, .2, 1) both; }
-  @media (prefers-reduced-motion: reduce) { .monogram { animation: none; } html { scroll-behavior: auto; } }
+  .side h1, .side .role, .side .intro, .side-nav, .side-foot { animation: rise .8s cubic-bezier(.2, .7, .2, 1) both; }
+  .side h1 { animation-delay: .1s; } .side .role { animation-delay: .2s; } .side .intro { animation-delay: .3s; } .side-nav { animation-delay: .4s; } .side-foot { animation-delay: .5s; }
+
+  .panel > .m-card, .panel > .m-widget, .panel > .m-docs { animation: drift 7s ease-in-out infinite; }
+  .project:nth-child(2) .panel > * { animation-delay: -2.5s; }
+  .project:nth-child(3) .panel > * { animation-delay: -5s; }
+  .panel::after { animation: pulse 5s ease-in-out infinite; }
+
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  .btn { transition: background-color .15s ease, border-color .15s ease, transform .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .chips li { transition: border-color .15s ease, background-color .15s ease; }
+  .chips li:hover { border-color: var(--brass); background: color-mix(in srgb, var(--brass) 12%, transparent); }
+
+  .side-nav a { padding-bottom: .15rem; background: linear-gradient(var(--brass), var(--brass)) 0 100% / 0 2px no-repeat; transition: background-size .3s ease; }
+  .side-nav a:hover, .side-nav a.active { background-size: 100% 2px; text-decoration: none; }
+
+  .progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; width: 100%; height: 3px; background: var(--brass); transform: scaleX(0); transform-origin: 0 50%; z-index: 20; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
 </style>
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
 <div class="layout">
   <header class="side">
@@ -400,5 +385,46 @@
     </footer>
   </div>
 </div>
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasIO = "IntersectionObserver" in window;
+
+  var bar = document.querySelector(".progress");
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (h > 0 ? Math.min(window.scrollY / h, 1) : 0) + ")";
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if (hasIO && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    document.querySelectorAll("main h2, .project .panel, .project .copy, .rows > .row").forEach(function (el) {
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  }
+
+  if (hasIO) {
+    var links = document.querySelectorAll(".side-nav a");
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove("active"); a.removeAttribute("aria-current"); });
+        var a = byId[e.target.id];
+        if (a) { a.classList.add("active"); a.setAttribute("aria-current", "true"); }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    document.querySelectorAll("main section").forEach(function (s) { spy.observe(s); });
+  }
+})();
+</script>
 </body>
 </html>
